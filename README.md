@@ -1,5 +1,5 @@
 # MySlither
-A Java implementation of the [slither.io](https://slither.io) client.
+A Java implementation of the [slither.io](https://slither.io) client pulled by Mohammad.
 
 ### Features / Screenshots
 ![Screenshot01](https://cloud.githubusercontent.com/assets/11258252/15582289/741d9dbe-2370-11e6-82a8-2dc135f823b6.png)
