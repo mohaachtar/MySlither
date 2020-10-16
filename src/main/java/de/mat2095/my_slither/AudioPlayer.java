@@ -5,12 +5,8 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Adapted from code copied from the author below.
- *
- * This is an example program that demonstrates how to play back an audio file
- * using the Clip in Java Sound API.
- * @author www.codejava.net
- *
+ * Adapted from code from the below site.
+ * https://www.codejava.net/coding/how-to-play-back-audio-in-java-with-examples
  */
 public class AudioPlayer implements LineListener, Runnable {
 
