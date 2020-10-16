@@ -97,6 +97,7 @@ final class MySlitherCanvas extends JPanel {
             @Override
             public void mousePressed(MouseEvent e) {
                 mouseInput.boost = true;
+				(new Thread(new AudioPlayer("src/ding.wav"))).start()
             }
 
             @Override
