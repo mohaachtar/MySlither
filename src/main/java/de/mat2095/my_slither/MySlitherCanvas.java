@@ -104,8 +104,10 @@ final class MySlitherCanvas extends JPanel {
             @Override
             public void mousePressed(MouseEvent e) {
                 mouseInput.boost = true;
+                //creates instance of thread to run instance of AudioPlayer
                 (new Thread(new AudioPlayer("src/ding.wav"))).start();
 
+                //sets the user's snake to a random colour.
                 OWN_SNAKE_BODY_COLOR = genRandomColor();
                 OWN_SNAKE_COLOR = genRandomColor();
             }
