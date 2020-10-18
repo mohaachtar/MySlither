@@ -17,8 +17,6 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import javax.swing.*;
 
-import java.util.Random;
-
 import java.awt.event.*;
 
 
@@ -50,6 +48,8 @@ final class MySlitherCanvas extends JPanel {
     private long lastFrameTime;
     private double fps;
     final ScheduledExecutorService repaintThread;
+
+    Random random = new Random();
 
     final MouseInput mouseInput = new MouseInput();
 
@@ -105,10 +105,9 @@ final class MySlitherCanvas extends JPanel {
             public void mousePressed(MouseEvent e) {
                 mouseInput.boost = true;
                 (new Thread(new AudioPlayer("src/ding.wav"))).start();
-                Random random = new Random();
 
-                OWN_SNAKE_BODY_COLOR = genRandomColor(random);
-                OWN_SNAKE_COLOR = genRandomColor(random);
+                OWN_SNAKE_BODY_COLOR = genRandomColor();
+                OWN_SNAKE_COLOR = genRandomColor();
             }
 
             @Override
@@ -138,8 +137,8 @@ final class MySlitherCanvas extends JPanel {
         this.map = map;
     }
 
-    Color genRandomColor(Random r) {
-        return new Color(r.nextInt(256), r.nextInt(256), r.nextInt(256));
+    Color genRandomColor() {
+        return new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
     }
 
     @Override
@@ -192,8 +191,7 @@ final class MySlitherCanvas extends JPanel {
             g.drawOval(-64, -64, model.gameRadius * 2 + 128, model.gameRadius * 2 + 128);
             g.setStroke(oldStroke);
 
-            Random random = new Random();
-            g.setColor(genRandomColor(random));
+            g.setColor(genRandomColor());
             model.foods.values().forEach(food -> {
                 double foodRadius = food.getRadius();
                 g.fill(new Ellipse2D.Double(food.x - foodRadius, food.y - foodRadius, foodRadius * 2, foodRadius * 2));
