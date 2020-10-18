@@ -44,13 +44,6 @@ final class MySlitherCanvas extends JPanel {
     private static final Font NAME_FONT = Font.decode("SansSerif-BOLD");
     private static final Font DEBUG_FONT = Font.decode("SansSerif-PLAIN-12");
 
-    private static final Color[] COLOURS = new Color[] {
-        Color.RED, Color.GREEN, Color.BLUE, Color.MAGENTA, 
-        Color.CYAN, Color.YELLOW, Color.BLACK, Color.WHITE, 
-        Color.GRAY, Color.DARK_GRAY, Color.LIGHT_GRAY, 
-        Color.ORANGE, Color.PINK
-    };
-
     private boolean[] map;
     private final MySlitherJFrame view;
     private int zoom = 12;
