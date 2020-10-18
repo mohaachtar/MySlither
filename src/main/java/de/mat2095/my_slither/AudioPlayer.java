@@ -10,8 +10,11 @@ import java.io.IOException;
  */
 public class AudioPlayer implements LineListener, Runnable {
 
+    //flag to show whether audio has finished playing or not.
     private boolean playCompleted;
+    //instance of Clip class to hold playable audio.
     private Clip audioClip;
+    //instance of AudioInputStream to hold audio file.
     private AudioInputStream audioFile;
 
     public AudioPlayer(String path) {
@@ -23,7 +26,8 @@ public class AudioPlayer implements LineListener, Runnable {
             audioClip = (Clip) AudioSystem.getLine(new DataLine.Info(Clip.class, audioFile.getFormat()));
             audioClip.addLineListener(this);
             audioClip.open(audioFile);
-
+            
+        //catch exceptions.
         } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
         }
@@ -35,12 +39,13 @@ public class AudioPlayer implements LineListener, Runnable {
         }
     }
 
-    /**
-     * Listens to the START and STOP events of the audio line.
-     */
+    
+    //Listens to for STOP events of the audio line. 
     @Override
     public void update(LineEvent event) {
+        //if audio finished playing.
         if (event.getType() == LineEvent.Type.STOP) {
+            //set flag to true.
             playCompleted = true;
         }
     }
