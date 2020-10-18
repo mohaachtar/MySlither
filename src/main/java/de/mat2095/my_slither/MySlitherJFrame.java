@@ -213,6 +213,7 @@ final class MySlitherJFrame extends JFrame {
 
         // === center ===
         log = new JTextArea("hi");
+
         log.setEditable(false);
         log.setLineWrap(true);
         log.setFont(Font.decode("Monospaced 11"));
