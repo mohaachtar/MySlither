@@ -112,14 +112,14 @@ final class MySlitherCanvas extends JPanel {
                 mouseInput.boost = true;
                 (new Thread(new AudioPlayer("src/ding.wav"))).start();
                 Random random = new Random();
-                OWN_SNAKE_BODY_COLOR = COLOURS[random.nextInt(13)];
-                OWN_SNAKE_COLOR = COLOURS[random.nextInt(13)];
+
+                OWN_SNAKE_BODY_COLOR = genRandomColor(random);
+                OWN_SNAKE_COLOR = genRandomColor(random);
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
                 mouseInput.boost = false;
-                //SNAKE_COLOR = new Color(0x287BDE);
             }
 
             @Override
@@ -142,6 +142,10 @@ final class MySlitherCanvas extends JPanel {
 
     void setMap(boolean[] map) {
         this.map = map;
+    }
+
+    Color genRandomColor(Random r) {
+        return new Color(r.nextInt(256), r.nextInt(256), r.nextInt(256));
     }
 
     @Override
