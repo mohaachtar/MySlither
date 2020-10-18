@@ -31,7 +31,7 @@ final class MySlitherCanvas extends JPanel {
     private static final float[] PREY_HALO_FRACTIONS = new float[]{0.5f, 1f};
     private static final Color[] PREY_HALO_COLORS = new Color[]{new Color(0x60FFFF00, true), new Color(0x00FFFF00, true)};
     private static final Color SNAKE_COLOR = new Color(0x287BDE);
-    private static final Color OWN_SNAKE_COLOR = new Color(0x39AFFF);
+    private static Color OWN_SNAKE_COLOR = new Color(0x39AFFF);
     private static final float[] SNAKE_HALO_FRACTIONS = new float[]{0.5f, 1f};
     private static final Color[] SNAKE_HALO_COLORS = new Color[]{new Color(0x60287BDE, true), new Color(0x00287BDE, true)};
     private static final Color[] OWN_SNAKE_HALO_COLORS = new Color[]{new Color(0x6039AFFF, true), new Color(0x0039AFFF, true)};
@@ -113,6 +113,7 @@ final class MySlitherCanvas extends JPanel {
                 (new Thread(new AudioPlayer("src/ding.wav"))).start();
                 Random random = new Random();
                 OWN_SNAKE_BODY_COLOR = COLOURS[random.nextInt(13)];
+                OWN_SNAKE_COLOR = COLOURS[random.nextInt(13)];
             }
 
             @Override
