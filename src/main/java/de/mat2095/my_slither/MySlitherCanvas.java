@@ -192,8 +192,8 @@ final class MySlitherCanvas extends JPanel {
             g.drawOval(-64, -64, model.gameRadius * 2 + 128, model.gameRadius * 2 + 128);
             g.setStroke(oldStroke);
 
-            Random r = new Random();
-            g.setColor(new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255)));
+            Random random = new Random();
+            g.setColor(genRandomColor(random));
             model.foods.values().forEach(food -> {
                 double foodRadius = food.getRadius();
                 g.fill(new Ellipse2D.Double(food.x - foodRadius, food.y - foodRadius, foodRadius * 2, foodRadius * 2));
