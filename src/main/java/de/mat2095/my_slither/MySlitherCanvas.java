@@ -10,6 +10,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Path2D;
 import java.awt.geom.Rectangle2D;
+import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -176,7 +177,8 @@ final class MySlitherCanvas extends JPanel {
             g.drawOval(-64, -64, model.gameRadius * 2 + 128, model.gameRadius * 2 + 128);
             g.setStroke(oldStroke);
 
-            g.setColor(FOOD_COLOR);
+            Random r = new Random();
+            g.setColor(new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255));
             model.foods.values().forEach(food -> {
                 double foodRadius = food.getRadius();
                 g.fill(new Ellipse2D.Double(food.x - foodRadius, food.y - foodRadius, foodRadius * 2, foodRadius * 2));
