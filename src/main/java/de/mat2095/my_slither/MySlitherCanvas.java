@@ -3,6 +3,7 @@ package de.mat2095.my_slither;
 import static de.mat2095.my_slither.MySlitherModel.PI2;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
@@ -14,6 +15,10 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import javax.swing.*;
+
+import java.util.Random;
+
+import java.awt.event.*;
 
 
 final class MySlitherCanvas extends JPanel {
@@ -31,12 +36,19 @@ final class MySlitherCanvas extends JPanel {
     private static final Color[] SNAKE_HALO_COLORS = new Color[]{new Color(0x60287BDE, true), new Color(0x00287BDE, true)};
     private static final Color[] OWN_SNAKE_HALO_COLORS = new Color[]{new Color(0x6039AFFF, true), new Color(0x0039AFFF, true)};
     private static final Color SNAKE_BODY_COLOR = new Color(0x6A8759);
-    private static final Color OWN_SNAKE_BODY_COLOR = new Color(0xA5C261);
+    private static Color OWN_SNAKE_BODY_COLOR = new Color(0xA5C261);
     private static final Color MAP_COLOR = new Color(0xA0A9B7C6, true);
     private static final Color MAP_POSITION_COLOR = new Color(0xE09E2927, true);
     private static final Color NAME_SHADOW_COLOR = new Color(0xC02B2B2B, true);
     private static final Font NAME_FONT = Font.decode("SansSerif-BOLD");
     private static final Font DEBUG_FONT = Font.decode("SansSerif-PLAIN-12");
+
+    private static final Color[] COLOURS = new Color[] {
+        Color.RED, Color.GREEN, Color.BLUE, Color.MAGENTA, 
+        Color.CYAN, Color.YELLOW, Color.BLACK, Color.WHITE, 
+        Color.GRAY, Color.DARK_GRAY, Color.LIGHT_GRAY, 
+        Color.ORANGE, Color.PINK
+    };
 
     private boolean[] map;
     private final MySlitherJFrame view;
@@ -68,10 +80,11 @@ final class MySlitherCanvas extends JPanel {
         }
     }
 
+
     MySlitherCanvas(MySlitherJFrame view) {
         super();
         this.view = view;
-
+        
         setBackground(BACKGROUND_COLOR);
         setForeground(FOREGROUND_COLOR);
 
@@ -97,12 +110,15 @@ final class MySlitherCanvas extends JPanel {
             @Override
             public void mousePressed(MouseEvent e) {
                 mouseInput.boost = true;
-				(new Thread(new AudioPlayer("src/ding.wav"))).start();
+                (new Thread(new AudioPlayer("src/ding.wav"))).start();
+                Random random = new Random();
+                OWN_SNAKE_BODY_COLOR = COLOURS[random.nextInt(13)];
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
                 mouseInput.boost = false;
+                //SNAKE_COLOR = new Color(0x287BDE);
             }
 
             @Override
